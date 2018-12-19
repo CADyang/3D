@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            margin: 150px auto;
+            position: relative;
+            /*加透视  辅助观察 3d转换 不是正真意义的3d呈现*/
+            /*perspective: 200px;*/
+            /*正真意义的3d呈现*/
+            transform-style: preserve-3d;
+
+            transform: rotateY(30deg) rotateX(-30deg);
+            animation: boxRotate 4s linear infinite;
+        }
+
+        @keyframes boxRotate {
+            from{}
+            to{
+                transform: rotateY(390deg) rotateX(-30deg);
+            }
+        }
+
+        .box > div{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            line-height: 200px;
+            opacity: 0.5;
+        }
+        .box .front{
+            background: pink;
+            transform: translateZ(100px);
+        }
+        .box .back{
+            background: green;
+            transform: translateZ(-100px) rotateY(180deg);
+        }
+        .box .top{
+            background: yellow;
+            transform: translateY(-100px) rotateX(90deg);
+        }
+        .box .bottom{
+            background: red;
+            transform: translateY(100px) rotateX(-90deg);
+        }
+        .box .left{
+            background: blue;
+            transform: translateX(-100px) rotateY(-90deg);
+        }
+        .box .right{
+            background: #fa0;
+            transform: translateX(100px) rotateY(90deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="front">front</div>
+        <div class="back">back</div>
+        <div class="top">top</div>
+        <div class="bottom">bottom</div>
+        <div class="left">left</div>
+        <div class="right">right</div>
+    </div>
+</body>
+</html>
